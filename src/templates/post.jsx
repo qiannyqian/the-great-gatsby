@@ -10,6 +10,7 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.css";
+import img from "../../static/logos/logo-48.png";
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -31,6 +32,7 @@ export default class PostTemplate extends React.Component {
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <h1>{post.title}</h1>
+            <img src={img} />
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
               <PostTags tags={post.tags} />
@@ -66,6 +68,9 @@ export const pageQuery = graphql`
         prevSlug
         slug
         date
+      }
+      wordCount {
+        words
       }
     }
   }
